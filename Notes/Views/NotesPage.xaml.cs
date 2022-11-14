@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Xamarin.Forms;
 
@@ -17,12 +18,14 @@ namespace Notes.Views
             {
                 editor.Text = File.ReadAllText(_fileName);
             }
+
         }
 
         void OnSaveButtonClicked(object sender, EventArgs e)
         {
             // Save the file.
             File.WriteAllText(_fileName, editor.Text);
+            Debug.Print(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
         }
 
         void OnDeleteButtonClicked(object sender, EventArgs e)
